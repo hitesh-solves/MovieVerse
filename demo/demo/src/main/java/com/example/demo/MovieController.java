@@ -1,4 +1,4 @@
-package com.example.demo;
+﻿package com.example.demo;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,8 @@ import java.util.Map;
         "http://127.0.0.1:5500",
         "http://localhost:5500",
         "http://127.0.0.1:3000",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "https://unique-sorbet-3ce2b8.netlify.app"
 })
 @RestController
 @RequestMapping("/api/movies")
@@ -97,3 +98,4 @@ public class MovieController {
         }
     }
 }
+
