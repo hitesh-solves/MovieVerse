@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieVerse - Discover Movies</title>
+  
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link to external CSS stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">
+        <span class="logo-icon">🎬</span>
+        <span class="logo-text">Movie<span class="accent-text">Verse</span></span>
+      </div>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active" data-nav="home">Home</a></li>
+        <li><a href="#free-movies" data-nav="free-movies">Free Movies</a></li>
+        <li><a href="#popular" data-nav="popular">Popular</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero & Filter Controls Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Discover Your Next Favorite Film</h1>
+      <p class="hero-subtitle">Browse trending movies, filter by language, or search by title.</p>
+      
+      <!-- Search & Language Filter Controls -->
+      <div class="controls-container">
+        <!-- Search Bar -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="search" 
+            id="searchInput" 
+            placeholder="Search movies by title..." 
+            autocomplete="off"
+            aria-label="Search movies by title"
+          >
+        </div>
+
+        <!-- Language Filter Dropdown -->
+        <div class="filter-box">
+          <label for="languageSelect" class="filter-label">Language:</label>
+          <select id="languageSelect">
+            <option value="all">All Languages</option>
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Korean">Korean</option>
+            <option value="Japanese">Japanese</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <!-- Dedicated "Watch Free & Legally" Section -->
+    <section class="free-movies-section" id="free-movies">
+      <div class="section-header">
+        <div class="section-header-text">
+          <span class="section-badge">100% Free &amp; Rights-Verified</span>
+          <h2 class="section-title">Watch Free &amp; Legally</h2>
+          <p class="section-subtitle">Stream full-length classic public domain films directly in MovieVerse — authorized, rights-verified, and free to play.</p>
+        </div>
+        <span id="freeMovieCount" class="movie-count">Verified films</span>
+      </div>
+
+      <!-- Featured Free Movies Hero (Populated dynamically) -->
+      <div id="featuredFreeMovies" class="featured-free-movies">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Free Movies Cards Grid (Populated dynamically by script.js) -->
+<div id="freeMoviesGrid" class="movies-grid free-movies-grid">
+  <!-- Rendered dynamically -->
+</div>
+      <button type="button" id="loadMoreFreeBtn" class="load-more-btn hidden">
+        Load More Free Movies
+      </button>
+    </section>
+
+    <!-- Popular Movies Section -->
+    <section class="movies-section" id="popular">
+      <div class="section-header">
+        <div class="section-header-text">
+          <h2 class="section-title" id="resultsSectionTitle">Popular Movies</h2>
+        </div>
+        <span id="movieCount" class="movie-count">Showing movies</span>
+      </div>
+
+      <div id="resultsStatus" class="results-status hidden">
+        <div class="spinner"></div>
+        <p id="resultsStatusText">Searching movies...</p>
+      </div>
+
+      <!-- Movie Cards Grid (Populated dynamically by script.js) -->
+      <div id="moviesGrid" class="movies-grid">
+        <!-- JavaScript will render movie cards here -->
+      </div>
+      <button type="button" id="loadMoreBtn" class="load-more-btn">
+        Load More Movies
+      </button>
+
+      <!-- No Results Message (Hidden by default) -->
+      <div id="noResults" class="no-results hidden">
+        <p class="no-results-icon">🎥</p>
+        <h3 id="noResultsTitle">No movies found</h3>
+        <p id="noResultsText">Try searching for a different title or resetting your language filter.</p>
+        <button type="button" id="resetBtn" class="reset-btn">Reset Filters</button>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="section-header">
+        <div class="section-header-text">
+          <h2 class="section-title">About MovieVerse</h2>
+        </div>
+      </div>
+      <div class="about-content">
+        <p>MovieVerse helps you discover movies, search by title, filter by language, explore movie information, and find legal viewing options.</p>
+        <p>Use search to look up titles such as KGF or Chhichhore, browse popular films from TMDB, and open <strong>Where to Watch</strong> for official streaming providers in India.</p>
+        <p><strong>Watch Free &amp; Legally</strong> is a separate, rights-verified list of public-domain films. Those titles can be played in MovieVerse from authorized sources such as the Internet Archive. They are never mixed into TMDB popular or search results.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-brand">🎬 MovieVerse</p>
+      <p class="footer-text">Built with HTML, CSS, and JavaScript. Your portal to movie discovery.</p>
+      <p class="footer-copy">&copy; 2026 MovieVerse. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Watch Providers & Movie Details Modal -->
+  <div id="watchModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalMovieTitle">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-body">
+        <!-- Movie Details Header -->
+        <div class="modal-movie-header">
+          <div class="modal-poster-wrapper">
+            <img id="modalMoviePoster" src="" alt="Movie Poster" class="modal-poster">
+          </div>
+          <div class="modal-movie-details">
+            <h2 id="modalMovieTitle" class="modal-title"></h2>
+            <div class="modal-meta">
+              <span id="modalMovieYear" class="modal-year"></span>
+              <span id="modalMovieLanguage" class="language-badge"></span>
+              <span id="modalMovieRating" class="modal-rating"></span>
+            </div>
+            <p id="modalMovieOverview" class="modal-overview"></p>
+          </div>
+        </div>
+
+        <!-- In-App Streaming Video Player for Free Legal Films -->
+        <div id="modalPlayerSection" class="modal-player-section hidden">
+          <div class="player-header">
+            <div class="player-title-badge">
+              <span class="live-dot"></span>
+              <span id="playerStatusText">In-App Stream • Free Public Domain Film</span>
+            </div>
+            <a id="modalSourceLink" href="#" target="_blank" rel="noopener noreferrer" class="source-link" title="Open official copy on source platform">
+              <span>Open Source</span> ↗
+            </a>
+          </div>
+          <div class="player-quality-row">
+            <label for="modalQualitySelect" id="modalQualityLabel" class="quality-label hidden">Playback quality</label>
+            <select id="modalQualitySelect" class="quality-select hidden" aria-label="Select playback quality"></select>
+            <p id="modalQualityNote" class="quality-note"></p>
+          </div>
+
+          <!-- Fallback iframe player for non-direct sources -->
+          <div id="fallbackPlayerWrapper" class="player-frame-wrapper hidden">
+            <iframe
+              id="modalVideoPlayer"
+              src=""
+              width="100%"
+              height="380"
+              frameborder="0"
+              webkitallowfullscreen="true"
+              mozallowfullscreen="true"
+              allowfullscreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              loading="lazy"
+              title="In-App Player"
+            ></iframe>
+          </div>
+
+          <!-- Custom HTML5 Video Player -->
+          <div id="customVideoPlayer" class="custom-video-player">
+            <video id="videoElement" preload="metadata" playsinline>
+              <p class="video-fallback">Your browser does not support HTML5 video playback.</p>
+            </video>
+
+            <!-- Custom Controls Overlay -->
+            <div id="playerControls" class="player-controls">
+              <!-- Progress Bar -->
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div id="progressBuffer" class="progress-buffer"></div>
+                  <div id="progressFill" class="progress-fill"></div>
+                  <input type="range" id="progressSlider" class="progress-slider" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+                </div>
+                <div class="time-display">
+                  <span id="currentTime">0:00</span>
+                  <span class="time-separator">/</span>
+                  <span id="duration">0:00</span>
+                </div>
+              </div>
+
+              <!-- Control Buttons -->
+              <div class="controls-row">
+                <div class="controls-left">
+                  <button id="playPauseBtn" class="control-btn" aria-label="Play" title="Play/Pause (Space)">
+                    <span class="icon-play">▶</span>
+                    <span class="icon-pause hidden">⏸</span>
+                  </button>
+                  <button id="rewindBtn" class="control-btn" aria-label="Rewind 10 seconds" title="Rewind 10s (Left Arrow)">
+                    <span>⏪</span>
+                  </button>
+                  <button id="forwardBtn" class="control-btn" aria-label="Forward 10 seconds" title="Forward 10s (Right Arrow)">
+                    <span>⏩</span>
+                  </button>
+                  <div class="volume-control">
+                    <button id="muteBtn" class="control-btn" aria-label="Mute" title="Mute/Unmute (M)">
+                      <span class="icon-volume-high">🔊</span>
+                      <span class="icon-volume-low hidden">🔉</span>
+                      <span class="icon-mute hidden">🔇</span>
+                    </button>
+                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" value="1" step="0.1" aria-label="Volume">
+                  </div>
+                </div>
+
+                <div class="controls-center">
+                  <span id="playerTitle" class="player-title-display"></span>
+                </div>
+
+                <div class="controls-right">
+                  <button id="speedBtn" class="control-btn" aria-label="Playback speed" title="Playback speed">
+                    <span id="speedDisplay">1x</span>
+                  </button>
+                  <button id="pipBtn" class="control-btn" aria-label="Picture-in-picture" title="Picture-in-Picture">
+                    <span>📺</span>
+                  </button>
+                  <button id="fullscreenBtn" class="control-btn" aria-label="Fullscreen" title="Fullscreen (F)">
+                    <span class="icon-fullscreen">⛶</span>
+                    <span class="icon-exit-fullscreen hidden">✕</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="playerLoading" class="player-loading hidden">
+              <div class="spinner"></div>
+              <p>Loading video...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="playerError" class="player-error hidden">
+              <p class="error-icon">⚠️</p>
+              <p id="playerErrorMessage">Video playback failed</p>
+              <button id="playerRetryBtn" class="retry-btn">Retry</button>
+            </div>
+          </div>
+
+          <div id="modalLegalRightsNotice" class="legal-rights-box">
+            <div class="rights-icon">⚖️</div>
+            <div class="rights-content">
+              <h4 id="modalRightsTitle">Verified Public Domain Copy</h4>
+              <p id="modalRightsReason" class="rights-reason"></p>
+              <p class="rights-license">License: <span id="modalRightsLicense"></span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safe In-App Playback Architecture Notice -->
+        <div class="playback-section" id="modalPlaybackNotice">
+          <div class="playback-header">
+            <h3>🎬 In-App Viewing &amp; Playback Options</h3>
+          </div>
+          <div class="playback-notice">
+            <span class="notice-icon">🔒</span>
+            <div class="notice-text">
+              <strong>Authorized Playback Only:</strong>
+              Commercial and subscription streams are protected by copyright laws and DRM. To stream legally and support creators, select any authorized provider below to view on their official platform.
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch Providers Section -->
+        <div class="providers-section">
+          <div class="providers-header">
+            <h3>Where to Watch in India</h3>
+            <span class="region-badge">Region: India (IN)</span>
+          </div>
+
+          <!-- Loading State -->
+          <div id="modalLoading" class="modal-state loading-state hidden">
+            <div class="spinner"></div>
+            <p>Checking legal streaming availability...</p>
+          </div>
+
+          <!-- Error State -->
+          <div id="modalError" class="modal-state error-state hidden">
+            <p class="state-icon">⚠️</p>
+            <p id="modalErrorMessage">Unable to load streaming availability.</p>
+            <button type="button" id="modalRetryBtn" class="retry-btn">Retry</button>
+          </div>
+
+          <!-- Empty State -->
+          <div id="modalEmpty" class="modal-state empty-state hidden">
+            <p class="state-icon">ℹ️</p>
+            <p id="modalEmptyMessage">No official streaming providers are currently listed for this title in India (IN).</p>
+            <p class="sub-text">Availability updates frequently. You can check the official JustWatch / TMDB page below.</p>
+          </div>
+
+          <!-- Providers Content Container (Populated dynamically) -->
+          <div id="modalProvidersContent" class="providers-content"></div>
+
+          <!-- Primary JustWatch / TMDB Link Action -->
+          <div id="modalPrimaryAction" class="modal-primary-action hidden">
+            <a id="modalTmdbWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="primary-watch-link">
+              <span>View Verified Options on JustWatch / TMDB</span>
+              <span class="external-icon">↗</span>
+            </a>
+          </div>
+
+          <!-- Attribution & Legal Disclaimers -->
+          <div class="attribution-disclaimer">
+            <p class="attribution-text">
+              Streaming availability data provided by <a href="https://www.justwatch.com" target="_blank" rel="noopener noreferrer"><strong>JustWatch</strong></a> via <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer"><strong>TMDB</strong></a>.
+            </p>
+            <p class="legal-disclaimer">
+              MovieVerse complies with international copyright laws and only displays official, verified streaming services. Catalog availability is subject to change.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

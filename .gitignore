@@ -1,0 +1,13 @@
+
+# Protect local secrets
+demo/dev.properties
+demo/demo/dev.properties
+**/dev.properties
+.env
+.env.*
+
+# Ignore generated build files
+demo/target/
+demo/demo/target/
+**/target/
+MovieVerse/MovieVerse/
