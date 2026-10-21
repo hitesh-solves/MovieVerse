@@ -379,8 +379,8 @@ async function searchTmdbMovies(query) {
   const controller = new AbortController();
   searchController = controller;
 
-  const tmdbUrl = `http://localhost:8080/api/movies/search?query=${encodeURIComponent(query)}&page=1`;
-  const freeUrl = `http://localhost:8080/api/movies/free/search?query=${encodeURIComponent(query)}`;
+  const tmdbUrl = `https://movieverse-b9cy.onrender.com/api/movies/search?query=${encodeURIComponent(query)}&page=1`;
+  const freeUrl = `https://movieverse-b9cy.onrender.com/api/movies/free/search?query=${encodeURIComponent(query)}`;
 
   // Discover titles through TMDB (across all languages) and, independently,
   // look up rights-verified free copies. Free playback stays a separate
@@ -497,7 +497,7 @@ async function loadPopularMovies(page = 1) {
 
   try {
     const response = await fetch(
-      `http://localhost:8080/api/movies/popular?page=${page}`
+      `https://movieverse-b9cy.onrender.com/api/movies/popular?page=${page}`
     );
 
     if (!response.ok) {
@@ -688,7 +688,7 @@ function createFreeMovieCard(movie) {
   return card;
 }
 
-const FREE_MOVIES_API = "http://localhost:8080/api/movies/free";
+const FREE_MOVIES_API = "https://movieverse-b9cy.onrender.com/api/movies/free";
 let freeMoviesPage = 0;          // last page successfully loaded from backend
 let freeMoviesHasMore = true;    // false once backend returns no new movies
 let freeMoviesLoading = false;   // guards against overlapping requests
@@ -1004,7 +1004,7 @@ async function loadWatchProviders(movieId) {
 
   try {
     const response = await fetch(
-      `http://localhost:8080/api/movies/${movieId}/watch-providers?region=IN`,
+      `https://movieverse-b9cy.onrender.com/api/movies/${movieId}/watch-providers?region=IN`,
       { signal: controller.signal }
     );
 
